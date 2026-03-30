@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Application - Talk</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="login-container" class="container">
+        <div class="card glass">
+            <h1 class="title">Join Talk</h1>
+            
+            <!-- Step 1: Input Name -->
+            <div id="step-name" class="step">
+                <p class="subtitle">Enter your name to start</p>
+                <div class="input-group">
+                    <input type="text" id="username" placeholder="Your name..." autocomplete="off">
+                    <button id="next-btn" class="primary-btn">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Choose Create or Join -->
+            <div id="step-choice" class="step hidden">
+                <p class="subtitle">Hello, <span id="hello-user"></span>! What would you like to do?</p>
+                <div class="button-group">
+                    <button id="create-room-btn" class="primary-btn secondary">Create Room</button>
+                    <button id="join-room-nav-btn" class="primary-btn">Join Room</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Join Room (Enter PIN) -->
+            <div id="step-join" class="step hidden">
+                <p class="subtitle">Enter the 6-digit Room PIN</p>
+                <div class="input-group">
+                    <input type="text" id="join-pin" placeholder="Enter PIN..." maxlength="6" autocomplete="off">
+                    <button id="join-btn" class="primary-btn">Join Now</button>
+                    <button id="back-to-choice-btn" class="text-link">Back</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Create Room (Show PIN) -->
+            <div id="step-create" class="step hidden">
+                <p class="subtitle">Your Room is Ready!</p>
+                <div class="pin-display">
+                    <span id="generated-pin">------</span>
+                    <p class="pin-hint">Share this code with your friend.</p>
+                </div>
+                <button id="start-created-btn" class="primary-btn">Start Chatting</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat View -->
+    <div id="chat-container" class="container hidden">
+        <div class="chat-wrapper glass">
+            <header class="chat-header">
+                <div class="user-info">
+                    <span class="status-indicator"></span>
+                    <div>
+                        <h2 id="current-user">Talk</h2>
+                        <p id="room-id-display" class="room-id">PIN: ------</p>
+                    </div>
+                </div>
+                <button id="logout-btn" class="icon-btn" title="Leave Chat">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+                </button>
+            </header>
+            
+            <div id="messages" class="messages-area">
+                <div class="system-message">Welcome to Talk Room!</div>
+            </div>
+
+            <form id="message-form" class="message-footer">
+                <label for="file-input" class="attachment-btn" title="Share file">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/></svg>
+                </label>
+                <input type="file" id="file-input" class="hidden">
+                <input type="text" id="message-input" placeholder="Type a message..." autocomplete="off">
+                <button type="submit" id="send-btn" class="send-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
